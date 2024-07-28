@@ -58,11 +58,12 @@ export async function POST(request: Request){
         })
         await newUser.save()
     }
-
+    // console.log(email,username,verifyCode);
     const emailResponse = await sendVerificationEmail(
-        username,
         email,
+        username,
         verifyCode)
+        // console.log('mail',emailResponse);
        if (!emailResponse.success) {
             return Response.json({
                 success:false,
